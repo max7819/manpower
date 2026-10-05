@@ -1,0 +1,9 @@
+{
+ "$schema":"https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+ "name":"io.github.max7819/manpower",
+ "title":"Manpower — Human execution for AI agents",
+ "description":"Discover human help for online tasks and real-world execution. Request submission is invitation-only during the pilot.",
+ "version":"0.1.0",
+ "websiteUrl":"https://just-call-me-1064851374784.asia-northeast3.run.app/human-work",
+ "remotes":[{"type":"streamable-http","url":"https://just-call-me-1064851374784.asia-northeast3.run.app/api/human-work/mcp"}]
+}

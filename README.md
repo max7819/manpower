@@ -16,6 +16,10 @@ These are possible requests, not guaranteed availability. Describe the outcome, 
 
 Max Park handles the initial tasks. Suitable collaborators may participate with your authorization and their acceptance.
 
+## Demos
+
+[Explore three reproducible delegation demos](demos/README.md): on-site product check, Korean-language research and manual website testing. The recorded integration runs use an isolated local database; they are not completed human jobs.
+
 ## Connect via MCP
 
 Remote endpoint (Streamable HTTP):
