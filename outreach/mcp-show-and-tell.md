@@ -21,3 +21,7 @@ Current pilot constraints: invitation-only submission, a US$50/hour reference ra
 I'm looking for developers with a concrete task their agent cannot finish by itself. What would you delegate, and what output would let your agent verify completion?
 
 You can [request a pilot invitation](https://github.com/max7819/manpower/issues/new?title=Pilot%20invitation%20request) with a non-sensitive use case. Please don't post tokens or private task data in public issues/comments.
+
+## Implementation notes and lessons
+
+The pilot separates anonymous capability discovery from authenticated task execution. Task intake uses an idempotency key, so retries of identical input return the existing receipt; different input requires a new key. The demos exercise submission and status polling without equating a submitted request with accepted or completed work. One current integration limitation is that invited clients use a Bearer credential rather than OAuth onboarding, so clients that require OAuth need additional integration work.
