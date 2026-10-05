@@ -1,0 +1,11 @@
+{
+  "title": "Check a product in a Seoul store",
+  "description": "Visit a mutually agreed store and check the availability and displayed price of a specified product. Confirm the location, travel expenses and photo permission before accepting.",
+  "acceptanceCriteria": "Provide the displayed price, availability and observation time; include photos only if permitted and agreed.",
+  "category": "local_task",
+  "language": "en",
+  "location": "Seoul, South Korea — exact store to be agreed",
+  "acknowledgeManualReview": true,
+  "allowReferral": false,
+  "idempotencyKey": "example-store-check-001"
+}

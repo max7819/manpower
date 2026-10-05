@@ -1,0 +1,9 @@
+{
+  "name": "manpower-integration-examples",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "discover": "node examples/discover.mjs" },
+  "dependencies": { "@modelcontextprotocol/sdk": "1.32.0" },
+  "engines": { "node": ">=20" }
+}
