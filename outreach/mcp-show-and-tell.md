@@ -16,7 +16,7 @@ The endpoint uses Streamable HTTP. Anonymous clients can call `get_provider_prof
 
 The demo examples connect to live public discovery by default. Their recorded submission/status/idempotency runs use the actual service handler with an isolated local database. They are **integration demonstrations, not completed human jobs or customer transactions**. Nothing is submitted or billed by running the default examples.
 
-Current pilot constraints: invitation-only submission, a US$50/hour reference rate negotiable per task, and KST evening/weekend working windows. Negotiation and PayPal Sandbox are configured; instant agreements also need an enabled booking policy and slots. Sandbox collects no real money.
+Current pilot constraints: invitation-only submission, a US$50/hour reference rate negotiable per task, and KST evening/weekend working windows. Negotiation and PayPal Live checkout are configured; instant agreements also need an enabled booking policy and slots. Live checkout requires payer approval and can collect real money; a completed customer payment has not yet been verified.
 
 I'm looking for developers with a concrete task their agent cannot finish by itself. What would you delegate, and what output would let your agent verify completion?
 

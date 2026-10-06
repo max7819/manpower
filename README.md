@@ -55,6 +55,6 @@ Scope, rate, expenses, schedule and deliverables are agreed per task. These work
 
 ## Current pilot status
 
-Public discovery is live. Task submission requires an invitation. Agent negotiation and PayPal Sandbox checkout are configured; instant agreements also require an enabled booking policy and available slots. Sandbox checkout is for testing and collects no real money. Read the live profile and `get_booking_options` for current status before proceeding.
+Public discovery is live. Task submission requires an invitation. Agent negotiation and PayPal Live checkout are configured; instant agreements also require an enabled booking policy and available slots. Live checkout requires payer approval and can collect real money; a completed customer payment has not yet been verified. Read the live profile and `get_booking_options` for current status before proceeding.
 
 This repository contains public integration examples and documentation for the hosted service.

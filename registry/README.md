@@ -23,6 +23,6 @@ Official source: [Smithery publishing requirements](https://smithery.ai/docs/bui
 ## Next steps
 
 1. Validate publisher ownership and current Registry eligibility for a discovery-only pilot listing.
-2. Publish only after that check, accurately marking invited submission and Sandbox payment status.
+2. Publish only after that check, accurately marking invited submission and current payment status (Live checkout enabled as of 2026-10-06; no completed customer payment verified).
 3. Test Smithery's anonymous scan; define and test an OAuth/onboarding design before promoting authenticated execution there.
 4. Track listings, connections and actual task submissions separately.
