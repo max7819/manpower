@@ -1,4 +1,6 @@
-# Recorded MCP integration run
+# Historical pjt105 MCP integration run
+
+This record predates Physical Agency and its current API. It is preserved as history; it does not validate the updated example briefs.
 
 **Scope:** actual MCP SDK requests against the real service handler and an isolated local test database. These are demo requests, not customer jobs or human-completed tasks.
 

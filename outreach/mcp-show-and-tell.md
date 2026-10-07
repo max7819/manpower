@@ -1,27 +1,20 @@
-I'm building **Manpower**, a hosted MCP service for delegating tasks to people when an agent needs online or physical-world execution.
+I'm building **Physical Agency**, a hosted MCP and REST service for AI agents that need people to carry out real-world tasks.
 
-Examples include checking a product in a Seoul store, Korean-language market research, manual website testing, pickups and other practical tasks. Max Park is the initial performer; scope, location, availability, expenses and price are agreed per task.
+The public catalog has 160 consultation-required scenarios, including on-site checks, local errands, research, manual QA, designated driving, home cleaning and construction staffing. Entries describe potential requests; actual supply and conditions are confirmed separately.
 
-**Try public discovery — no token required:**
+MCP endpoint (Streamable HTTP):
 
 ```text
-https://just-call-me-1064851374784.asia-northeast3.run.app/api/human-work/mcp
+https://physical-agency-141382386601.asia-southeast1.run.app/api/mcp
 ```
 
-The endpoint uses Streamable HTTP. Anonymous clients can call `get_provider_profile` and `get_capabilities`. Task submission requires a pilot invitation and a Bearer token.
+Anonymous discovery offers `get_capabilities`, `list_products`, `get_product`, `list_skills`, `search_workers` and `get_worker_profile`. Operator-issued client keys enable `submit_task` and status queries with `get_task`. Submitting is an inquiry for human review, not a booking or payment. Pricing and schedule are agreed for each task.
 
-- [Repository and connection example](https://github.com/max7819/manpower)
-- [Three delegation demos](https://github.com/max7819/manpower/tree/main/demos)
-- [Live service and Agent guide](https://just-call-me-1064851374784.asia-northeast3.run.app/human-work)
+- [Live Agent quickstart](https://physical-agency-141382386601.asia-southeast1.run.app/en/agents)
+- [Service catalog](https://physical-agency-141382386601.asia-southeast1.run.app/en/services)
+- [Public integration examples](https://github.com/max7819/manpower)
+- [Example briefs](https://github.com/max7819/manpower/tree/main/demos)
 
-The demo examples connect to live public discovery by default. Their recorded submission/status/idempotency runs use the actual service handler with an isolated local database. They are **integration demonstrations, not completed human jobs or customer transactions**. Nothing is submitted or billed by running the default examples.
+Worker submissions are reviewed by an operator before customer delivery. No API checkout, instant fulfillment or public self-service key signup is offered. Examples default to read-only previews and do not submit work.
 
-Current pilot constraints: invitation-only submission, a US$50/hour reference rate negotiable per task, and KST evening/weekend working windows. Negotiation and PayPal Live checkout are configured; instant agreements also need an enabled booking policy and slots. Live checkout requires payer approval and can collect real money; a completed customer payment has not yet been verified.
-
-I'm looking for developers with a concrete task their agent cannot finish by itself. What would you delegate, and what output would let your agent verify completion?
-
-You can [request a pilot invitation](https://github.com/max7819/manpower/issues/new?title=Pilot%20invitation%20request) with a non-sensitive use case. Please don't post tokens or private task data in public issues/comments.
-
-## Implementation notes and lessons
-
-The pilot separates anonymous capability discovery from authenticated task execution. Task intake uses an idempotency key, so retries of identical input return the existing receipt; different input requires a new key. The demos exercise submission and status polling without equating a submitted request with accepted or completed work. One current integration limitation is that invited clients use a Bearer credential rather than OAuth onboarding, so clients that require OAuth need additional integration work.
+I'd welcome feedback from agent developers on discovery, task briefing and interpreting completion criteria.

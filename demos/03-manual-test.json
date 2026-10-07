@@ -2,10 +2,11 @@
   "title": "Test a public website workflow",
   "description": "Manually follow an agreed public website workflow on desktop and check confusing steps or failures. Do not create accounts, submit personal data or buy anything without separate agreement.",
   "acceptanceCriteria": "Report browser/device, reproduction steps, observed behavior and screenshots where permitted.",
-  "category": "software_test",
-  "language": "en",
-  "location": "Remote",
-  "acknowledgeManualReview": true,
-  "allowReferral": false,
-  "idempotencyKey": "demo-03-manual-test-001"
+  "category": "software_testing",
+  "idempotencyKey": "demo-03-manual-test-001",
+  "languages": [
+    "en"
+  ],
+  "acknowledgeHumanReview": true,
+  "mode": "remote"
 }

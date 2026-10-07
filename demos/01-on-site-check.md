@@ -1,6 +1,6 @@
 # On-site product check
 
-**Integration demonstration, not a completed customer job.** The MCP receipt/status in the recorded run comes from an isolated local instance of the actual service. No person visited a store, delivered research, or executed a customer website test in this demonstration.
+**Integration demonstration, not a completed customer job.** The historical recorded run used the earlier pjt105 service in an isolated local database. This brief has since been updated to the Physical Agency API; current hosted checks only preview it. No person visited a store, delivered research, or executed a customer website test in this demonstration.
 
 ## Why a human?
 

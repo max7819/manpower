@@ -3,9 +3,10 @@
   "description": "Find three Korean-language public sources for an agreed product category, compare options and summarize the findings in English. Agree on the category and research questions first.",
   "acceptanceCriteria": "Provide three source URLs, access dates, a comparison table and explicit uncertainties.",
   "category": "research",
-  "language": "en",
-  "location": "Remote",
-  "acknowledgeManualReview": true,
-  "allowReferral": false,
-  "idempotencyKey": "demo-02-korean-research-001"
+  "idempotencyKey": "demo-02-korean-research-001",
+  "languages": [
+    "en"
+  ],
+  "acknowledgeHumanReview": true,
+  "mode": "remote"
 }

@@ -1,14 +1,14 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.max7819/manpower",
-  "title": "Manpower \u2014 Human execution for AI agents",
-  "description": "Human execution for AI agents: public discovery; invitation-only pilot task submission.",
-  "version": "0.1.0",
-  "websiteUrl": "https://just-call-me-1064851374784.asia-northeast3.run.app/human-work",
+  "title": "Physical Agency — Real-world execution for AI agents",
+  "description": "Discover human tasks and staffing via MCP; operator-issued keys required for task inquiries.",
+  "version": "0.2.0",
+  "websiteUrl": "https://physical-agency-141382386601.asia-southeast1.run.app/en",
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://just-call-me-1064851374784.asia-northeast3.run.app/api/human-work/mcp"
+      "url": "https://physical-agency-141382386601.asia-southeast1.run.app/api/mcp"
     }
   ]
 }
