@@ -44,7 +44,7 @@ Record the returned publication status and timestamp here. **A committed server.
 
 1. Publish developer README, three runnable examples, public access-request issue template and server.json together.
 2. Complete official Registry account authorization and publish/verify the exact entry.
-3. Confirm search-engine index coverage for the live origin and sitemap; choose a custom domain separately (ROADMAP D10).
+3. Confirm search-engine index coverage for the live origin and sitemap; choose a custom domain separately.
 4. Turn one scenario into a real permissioned completed example before promoting its outcome as a case study. Current sample results are fabricated simulations.
 5. Publish demonstrations to developer communities only after reviewing exact text/media. Do not mass-message people or create unsupported success claims.
 
@@ -52,4 +52,4 @@ Measure: referring source → public tool usage → access requests → valid in
 
 ## Validation status — 2026-10-09
 
-Official JSON schema validation passed. Three REST exploration examples and the read-only MCP SDK example passed against the live service. All three scenario searches currently returned zero workers; no supply or fulfillment is claimed. Default offline runs and credential/redirect/retry tests passed. Official Registry lookup timed out in this environment, so existing publication status could not be established and no Registry publication was performed. The previously proposed GitHub namespace and metadata version are preserved.
+Official JSON schema validation passed. Three REST exploration examples and the read-only MCP SDK example passed against the live service. All three scenario searches currently returned zero workers; no supply or fulfillment is claimed. Default offline runs and credential/redirect/retry tests passed. The initial Official Registry lookup timed out; a later retry succeeded and returned no matching entries for this exact namespace. Publication is pending account-owner GitHub device authentication; no Registry publication has been performed. The previously proposed GitHub namespace and metadata version are preserved.
