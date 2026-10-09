@@ -1,0 +1,22 @@
+name: Request client access
+description: Describe a public project and intended use; key issuance is operator-reviewed.
+title: "[Client access] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a public issue. Do not include API keys, personal contact details, private customer information or confidential task data. Access is operator-reviewed and is not guaranteed. A private handoff channel must be agreed before credentials are issued.
+  - type: input
+    id: project
+    attributes:
+      label: Public project or repository
+      placeholder: https://github.com/your-org/your-project
+    validations:
+      required: true
+  - type: textarea
+    id: use_case
+    attributes:
+      label: What should your agent delegate?
+      description: Describe the general task, country/region and integration. Use fictional details if necessary.
+    validations:
+      required: true

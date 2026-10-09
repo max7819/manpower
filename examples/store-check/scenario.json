@@ -1,0 +1,33 @@
+{
+  "name": "store-check",
+  "task": {
+    "productId": "RET01",
+    "title": "Store shelf and stock check",
+    "description": "With store permission, observe three agreed product SKUs at one agreed store in Seoul. Record shelf availability and displayed prices; distinguish observed absence from confirmed stockout. Do not photograph customers or enter restricted areas.",
+    "acceptanceCriteria": "A timestamped observation for each SKU, permitted shelf photos, displayed prices and any access or verification limitations.",
+    "category": "field_check",
+    "requiredSkills": [
+      "store-visit",
+      "photography"
+    ],
+    "languages": [
+      "en"
+    ],
+    "mode": "onsite",
+    "acknowledgeHumanReview": true,
+    "idempotencyKey": "example-store-check-v1",
+    "countryCode": "KR",
+    "city": "Seoul"
+  },
+  "sampleResult": {
+    "items": [
+      {
+        "sku": "DEMO-001",
+        "observation": "Not visible on the agreed shelf; stockout not confirmed"
+      }
+    ],
+    "limitations": [
+      "Staff stock confirmation was outside the agreed scope."
+    ]
+  }
+}

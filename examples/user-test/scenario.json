@@ -1,0 +1,30 @@
+{
+  "name": "user-test",
+  "task": {
+    "productId": "USR03",
+    "title": "Developer API documentation usability test",
+    "description": "A developer follows our public API quickstart in an isolated sandbox using test credentials only. Record unclear steps, completion or blockers, and reproducible errors. No production changes or real payments.",
+    "acceptanceCriteria": "A step log, reproducible blockers, environment details and at least three specific documentation improvements.",
+    "category": "software_testing",
+    "requiredSkills": [
+      "usability-testing",
+      "manual-qa"
+    ],
+    "languages": [
+      "en"
+    ],
+    "mode": "remote",
+    "acknowledgeHumanReview": true,
+    "idempotencyKey": "example-user-test-v1"
+  },
+  "sampleResult": {
+    "completed": false,
+    "blockers": [
+      {
+        "step": 3,
+        "observation": "The example does not explain where to obtain sandbox credentials."
+      }
+    ],
+    "suggestion": "Link to test credential instructions before step 3."
+  }
+}
