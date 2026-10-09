@@ -1,6 +1,6 @@
 # Physical Agency — distribution and registry publication
 
-Prepared 2026-10-09. This document distinguishes ready assets from completed external publication.
+Published 2026-10-09. The official publisher confirmed registration of `io.github.max7819/manpower` version `0.2.0`.
 
 ## Publication payload
 
@@ -52,4 +52,10 @@ Measure: referring source → public tool usage → access requests → valid in
 
 ## Validation status — 2026-10-09
 
-Official JSON schema validation passed. Three REST exploration examples and the read-only MCP SDK example passed against the live service. All three scenario searches currently returned zero workers; no supply or fulfillment is claimed. Default offline runs and credential/redirect/retry tests passed. The initial Official Registry lookup timed out; a later retry succeeded and returned no matching entries for this exact namespace. Publication is pending account-owner GitHub device authentication; no Registry publication has been performed. The previously proposed GitHub namespace and metadata version are preserved.
+Official JSON schema validation passed. Three REST exploration examples and the read-only MCP SDK example passed against the live service. All three scenario searches currently returned zero workers; no supply or fulfillment is claimed. Default offline runs and credential/redirect/retry tests passed. The initial Official Registry lookup timed out; a later retry succeeded and returned no matching entries for this exact namespace. Account-owner GitHub device authentication and publication completed on 2026-10-09. The official publisher returned success for io.github.max7819/manpower version 0.2.0. The previously proposed GitHub namespace and metadata version are preserved.
+
+## Publication completed — 2026-10-09 08:26 UTC
+
+The account owner completed GitHub device authentication. Official publisher v1.8.1 returned `Successfully published` for `io.github.max7819/manpower` version `0.2.0`. The published remote is `https://physical-agency-141382386601.asia-southeast1.run.app/api/mcp`. No application source or credentials were published. Other directory listings are separate and are not claimed.
+
+[Official version record](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.max7819%2Fmanpower/versions/0.2.0). Independent public GET verification succeeded: status `active`, `isLatest=true`, publishedAt `2026-10-09T08:26:05.654596Z`. Name, version and remote URL exactly match server.json.

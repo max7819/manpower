@@ -105,7 +105,7 @@ curl 'https://physical-agency-141382386601.asia-southeast1.run.app/api/v1/produc
 
 [API reference](https://physical-agency-141382386601.asia-southeast1.run.app/api/v1/openapi) · [llms.txt](https://physical-agency-141382386601.asia-southeast1.run.app/llms.txt) · [Agent Markdown guide](https://physical-agency-141382386601.asia-southeast1.run.app/agents.md) · [Registry metadata](server.json)
 
-`server.json` is prepared publication metadata; its presence does not mean the server is already listed in a registry. [Publication status and steps](registry/README.md).
+Published in the official MCP Registry as **`io.github.max7819/manpower`**, version **`0.2.0`**. [Publication status and steps](registry/README.md).
 
 ## Integration repository
 
