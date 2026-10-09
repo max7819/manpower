@@ -20,10 +20,12 @@ Optional `PHYSICAL_AGENCY_ORIGIN` overrides the live origin. Only HTTPS or loopb
 
 ```sh
 mkdir -p .local
-node examples/user-test/run.mjs --request > .local/request.json
+node examples/user-test/run.mjs --prepare .local/request.json
 ```
 
-Review/edit the entire file: replace illustrative scope and location, agree any authorized access, provide real acceptance criteria and choose a unique idempotency key for a new job. The example key is only a placeholder; reusing it with changed content causes a conflict. Do not add passwords, production credentials or personal contact details to the task.
+`--prepare` creates a private draft file with a fresh UUID idempotency key. It refuses to overwrite an existing file, so retries cannot silently become a new job. No network request is made.
+
+Review/edit the entire file: replace illustrative scope and location, agree any authorized access, provide real acceptance criteria and retain the generated idempotency key. Use a new file for a genuinely new job; keep the same file/key for identical retries. `--request` remains a printable template with a placeholder key. Do not add passwords, production credentials or personal contact details to the task.
 
 A proposed budget can optionally be supplied as `budget.amountMinor` and `budget.currency` (ISO 4217). Amounts use the currency's minor unit (USD cents; KRW/JPY whole units). No example contains a service price. An optional ISO deadline must be future-dated for a new inquiry; retain the original deadline on identical retries.
 

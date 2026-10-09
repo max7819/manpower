@@ -65,7 +65,7 @@ Default runs are **offline simulations with fabricated results**, not evidence o
 node examples/store-check/run.mjs --explore
 ```
 
-Each scenario fetches capabilities, product conditions and relevant workers. [Full example instructions](examples/README.md) cover request preparation, explicit submission and retry behavior.
+Each scenario fetches capabilities, product conditions and relevant workers. [Task design guides](guides/README.md) explain required inputs, evidence and blocked outcomes. [Full example instructions](examples/README.md) cover request preparation, explicit submission and retry behavior.
 
 ## Request work
 
@@ -75,10 +75,10 @@ Prepare a request locally:
 
 ```sh
 mkdir -p .local
-node examples/store-check/run.mjs --request > .local/store-request.json
+node examples/store-check/run.mjs --prepare .local/store-request.json
 ```
 
-Edit the request with the actual authorized scope, location, acceptance criteria and a unique `idempotencyKey` for this job. A budget, if included, is the requester's proposed budget and is not a quote. Preserve the same reviewed file/key on identical retries.
+Edit the request with the actual authorized scope, location, acceptance criteria and retain its generated unique `idempotencyKey`. The command refuses to overwrite existing files. A budget, if included, is the requester's proposed budget and is not a quote. Preserve the same reviewed file/key on identical retries.
 
 With an operator-issued private credential file containing `{"token":"YOUR_CLIENT_TOKEN"}`, explicitly submit:
 
