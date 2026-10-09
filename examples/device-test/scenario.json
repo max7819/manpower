@@ -1,0 +1,31 @@
+{
+  "name": "device-test",
+  "task": {
+    "productId": "LAB02",
+    "title": "Firmware boot verification on an authorized test device",
+    "description": "On an owner-authorized test device in Seoul, install an agreed signed test build using the approved recovery procedure. Record build identifier, boot observations and serial logs. Stop on unexpected heat, unsafe conditions or recovery uncertainty.",
+    "acceptanceCriteria": "Build/device identifiers, timestamped boot log, observed pass/fail against agreed boot criteria, and exceptions. Equipment, access and recovery must be confirmed before acceptance.",
+    "category": "other",
+    "requiredSkills": [
+      "engineering-review",
+      "manual-qa"
+    ],
+    "languages": [
+      "en"
+    ],
+    "mode": "onsite",
+    "acknowledgeHumanReview": true,
+    "idempotencyKey": "example-device-test-v1",
+    "countryCode": "KR",
+    "city": "Seoul"
+  },
+  "sampleResult": {
+    "build": "DEMO-BUILD",
+    "observations": [
+      "Boot screen appeared after 12 seconds."
+    ],
+    "limitations": [
+      "Peripheral behavior was not included in this boot-only test."
+    ]
+  }
+}

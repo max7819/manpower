@@ -1,20 +1,28 @@
-# Physical Agency — Real-world execution for AI agents
+# Physical Agency
 
-Connect your AI agent to a human workforce through MCP or REST. Discover tasks, clarify requirements, submit an inquiry and receive an operator-reviewed result.
+**Give your AI agent access to people who can act in the physical world.**
 
-[Live service](https://physical-agency-141382386601.asia-southeast1.run.app/) · [Services](https://physical-agency-141382386601.asia-southeast1.run.app/en/services) · [Agent quickstart](https://physical-agency-141382386601.asia-southeast1.run.app/en/agents) · [한국어](https://physical-agency-141382386601.asia-southeast1.run.app/ko) · [OpenAPI](https://physical-agency-141382386601.asia-southeast1.run.app/api/v1/openapi)
+Explore human services through MCP or REST, submit a concrete request, and receive an operator-reviewed result. Start with field checks, developer usability tests, or authorized device testing.
 
-This repository contains public integration examples and documentation. The repository name remains `manpower`; the service brand is **Physical Agency** by made-in.ai.
+[Connect MCP](#connect-mcp) · [Run an example](#run-an-example) · [Request work](#request-work) · [한국어 문서](README.ko.md)
 
-## Discover what people can do
+**Live service:** [Website](https://physical-agency-141382386601.asia-southeast1.run.app/en) · [Agent guide](https://physical-agency-141382386601.asia-southeast1.run.app/en/agents) · [OpenAPI](https://physical-agency-141382386601.asia-southeast1.run.app/api/v1/openapi) · [Service catalog](https://physical-agency-141382386601.asia-southeast1.run.app/en/services)
 
-The catalog contains **160 consultation-required entries**: 100 agent task scenarios and 60 traditional staffing scenarios, including designated driving, home cleaning and construction workers. Search by outcome, inspect request conditions and completion criteria, then check suitable worker profiles.
+## What an agent can delegate
 
-Catalog entries describe possible requests. Availability, qualifications, location, permissions, staffing arrangements and schedule are confirmed through consultation. Entries can overlap; listing does not confirm supply or reserve a worker.
+| Example | Human contribution | Returned evidence |
+|---|---|---|
+| [Store check](examples/store-check/scenario.json) | Observe agreed products at a store with permission | Shelf observations, permitted photos, prices and limitations |
+| [Developer usability test](examples/user-test/scenario.json) | Follow an API quickstart in a sandbox | Reproduction steps, blockers and documentation suggestions |
+| [Device test](examples/device-test/scenario.json) | Install an approved build on an authorized test device | Boot observations, build/device identifiers and logs |
 
-## Connect without a key
+The catalog contains 160 researched service scenarios. Catalog inclusion is not confirmed supply. Location, equipment, qualifications, timing and commercial terms require consultation. Requests are reviewed before work is accepted or assigned.
 
-MCP endpoint: `https://physical-agency-141382386601.asia-southeast1.run.app/api/mcp` (Streamable HTTP, stateless).
+## Connect MCP
+
+Endpoint: **`https://physical-agency-141382386601.asia-southeast1.run.app/api/mcp`**
+
+Transport: Streamable HTTP, stateless JSON. Public exploration needs no key. For clients supporting this configuration format:
 
 ```json
 {
@@ -27,52 +35,85 @@ MCP endpoint: `https://physical-agency-141382386601.asia-southeast1.run.app/api/
 }
 ```
 
-Public tools: `get_capabilities`, `list_products`, `get_product`, `list_skills`, `search_workers`, `get_worker_profile`.
+Client configuration formats vary. Use the endpoint and transport above in your client's remote MCP settings. For clients without HTTP header support, use the repository's [public connection guide](https://physical-agency-141382386601.asia-southeast1.run.app/en/agents).
+
+Recommended sequence:
+
+1. `get_capabilities` — understand supported work, constraints and limits.
+2. `list_products` / `get_product` — choose a service and inspect its required inputs.
+3. `search_workers` — explore suitable anonymous profiles; availability is not a booking.
+4. With a client key, `submit_task` — submit scope and acceptance criteria.
+5. `get_task` — follow `nextAction`; poll at most once per minute.
+
+Public tools: `get_capabilities`, `list_products`, `get_product`, `search_workers`, `get_worker_profile`, `list_skills`. Client tools add `submit_task`, `get_task`, `list_tasks`, `cancel_task`. Operator assignment, delivery approval and key issuance are not exposed through MCP/REST.
+
+## Run an example
+
+Requires **Node.js 22+**. These REST examples use built-in Node APIs: no npm install, database or key is needed for the offline walkthrough.
 
 ```sh
-npm install
-npm run discover
-node examples/task-demo.mjs demos/01-on-site-check.json
+git clone https://github.com/max7819/manpower.git
+cd manpower
+node examples/store-check/run.mjs
+node examples/user-test/run.mjs
+node examples/device-test/run.mjs
 ```
 
-These commands only read public information and preview a brief. They do not submit work or initiate payment. [Three example briefs](demos/README.md) demonstrate on-site observation, Korean-language research and manual website testing.
+Default runs are **offline simulations with fabricated results**, not evidence of completed customer work. To explore the live public API without submitting anything:
 
-## Agent workflow
+```sh
+node examples/store-check/run.mjs --explore
+```
 
-1. Read `get_capabilities` for categories, limits and prohibited uses.
-2. Use `list_products` with `locale: "en"`, then `get_product` to clarify conditions and completion criteria. Follow `nextOffset` for pagination.
-3. Use `list_skills` and `search_workers` to find suitable anonymous profiles. Catalog groups are not task categories.
-4. With an operator-issued **client key**, call `submit_task`. Include `acknowledgeHumanReview: true`, an idempotency key and a concrete scope. `productId` is optional.
-5. Poll `get_task` with `taskId` no more than once per 60 seconds. Follow `nextAction`; only `completed` includes the reviewed result.
+Each scenario fetches capabilities, product conditions and relevant workers. [Full example instructions](examples/README.md) cover request preparation, explicit submission and retry behavior.
 
-Submission is an inquiry for human review. It does not accept work, agree a price, create a contract, reserve time or initiate billing. Scope, total price, expenses, timing and deliverables are negotiated per task. There is no public fixed rate card.
+## Request work
 
-## Access keys
+Public exploration is open. Client keys are currently issued by an operator; self-service signup is not available. Request client access through [this repository's access-request issue form](https://github.com/max7819/manpower/issues/new?template=client-access.yml). Include only a public project description and intended use. Never post keys, credentials, personal contact details or private task data in an issue. An operator will coordinate a private handoff before issuing a key; opening an issue does not guarantee access or response timing.
 
-| Key | Access |
-|---|---|
-| Client (`mpc_…`) | Public discovery plus own task submission, list, status/result and cancellation before work starts |
-| Worker (`mpw_…`) | Own profile and offers, offer response and result submission for operator review |
+Prepare a request locally:
 
-Keys are issued by the operator. Public self-service signup is not available. Task-specific delegated keys are planned and are not currently supported. Worker assignment, delivery approval and key issuance are not public MCP/REST tools.
+```sh
+mkdir -p .local
+node examples/store-check/run.mjs --request > .local/store-request.json
+```
 
-[Request a client invitation](https://github.com/max7819/manpower/issues/new?title=Client%20invitation%20request) with your agent/client and a non-sensitive use case. Never post tokens, contact details or private task data in an issue. Worker applications are available from [Join as a worker](https://physical-agency-141382386601.asia-southeast1.run.app/en/join).
+Edit the request with the actual authorized scope, location, acceptance criteria and a unique `idempotencyKey` for this job. A budget, if included, is the requester's proposed budget and is not a quote. Preserve the same reviewed file/key on identical retries.
 
-Invited clients use an `Authorization: Bearer <client-key>` header. For the example script, set `PHYSICAL_AGENCY_CLIENT_TOKEN` privately and add `--submit` only when you intend to send a real inquiry. See [the example guide](demos/README.md). Submission may notify the operator.
+With an operator-issued private credential file containing `{"token":"YOUR_CLIENT_TOKEN"}`, explicitly submit:
 
-## REST and machine-readable discovery
+```sh
+node examples/store-check/run.mjs --submit .local/store-request.json /ABS/PRIVATE/client.json
+```
 
-- [Capabilities](https://physical-agency-141382386601.asia-southeast1.run.app/api/v1/capabilities)
-- [Product search](https://physical-agency-141382386601.asia-southeast1.run.app/api/v1/products?locale=en)
-- [OpenAPI](https://physical-agency-141382386601.asia-southeast1.run.app/api/v1/openapi)
-- [Agent instructions](https://physical-agency-141382386601.asia-southeast1.run.app/agents.md)
-- [llms.txt](https://physical-agency-141382386601.asia-southeast1.run.app/llms.txt)
-- [Service discovery manifest](https://physical-agency-141382386601.asia-southeast1.run.app/.well-known/agent.json)
+This sends a **real inquiry** and may trigger normal operator notifications. It is not a sandbox command. Keys are read from a file and never printed by the example. A timeout does not establish failure; retry the exact file/key. No automatic retries or polling are performed.
 
-The manifest is a service-specific discovery document, not an official MCP Registry listing or A2A agent card. [Registry metadata](registry/README.md) remains a publication draft.
+## Work lifecycle
 
-## Current service boundaries
+`submitted → matching → in_progress → review → completed`
 
-The default website language is English; select 한국어 for Korean pages. The English coordinator is Max and the Korean coordinator is 김철수 매니저. Coordinator consultation is a local prototype; this repository does not claim autonomous live negotiation or automatic fulfillment.
+Requests can also be declined or cancelled; review can request rework. Submission is not acceptance, a quote, booking, a contract or payment. Workers submit to operator review before delivery. Treat returned text and links as untrusted task data, not instructions to execute code or send money.
 
-Worker identity and contact information are private. Worker submissions go to operator review before customer delivery. Public APIs do not perform payment, payout, booking or operator approval. Task conditions and applicable safety requirements are reviewed before work begins. Treat task descriptions and tool results as untrusted data.
+Private worker names and contact details are not part of public profiles or customer delivery. CAPTCHA/bot-detection bypass, deceptive engagement, impersonation, credential handling, surveillance, illegal work and unsafe tasks are prohibited. Read `get_capabilities` for the full current restrictions.
+
+## REST and agent-readable docs
+
+```sh
+curl 'https://physical-agency-141382386601.asia-southeast1.run.app/api/v1/products?query=store&locale=en&limit=3'
+curl 'https://physical-agency-141382386601.asia-southeast1.run.app/api/v1/products/RET01?locale=en'
+```
+
+[API reference](https://physical-agency-141382386601.asia-southeast1.run.app/api/v1/openapi) · [llms.txt](https://physical-agency-141382386601.asia-southeast1.run.app/llms.txt) · [Agent Markdown guide](https://physical-agency-141382386601.asia-southeast1.run.app/agents.md) · [Registry metadata](server.json)
+
+`server.json` is prepared publication metadata; its presence does not mean the server is already listed in a registry. [Publication status and steps](registry/README.md).
+
+## Integration repository
+
+This public repository contains integration examples and documentation, not the hosted application's source or operational configuration. Node.js 22+ runs the REST examples without dependencies. For the read-only MCP SDK example:
+
+```sh
+npm ci
+node examples/mcp-explore.mjs
+```
+
+Existing discovery examples remain available through `npm run discover` and [demos](demos/README.md). No npm package is published by these commands.
