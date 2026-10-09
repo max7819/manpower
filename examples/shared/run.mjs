@@ -1,4 +1,5 @@
-import { readFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
+import { randomUUID } from 'node:crypto';
 
 export const DEFAULT_ORIGIN = 'https://physical-agency-141382386601.asia-southeast1.run.app';
 
@@ -35,6 +36,13 @@ export async function submitReviewedRequest(body, token, origin, fetcher = fetch
   return { id: task.id, status: task.status, nextAction: task.nextAction, note: 'Received for operator review; not acceptance, a quote, booking or payment. Poll no more than once per minute.' };
 }
 
+export async function prepareRequest(task, output) {
+  const draft = { ...task, idempotencyKey: randomUUID() };
+  // Exclusive creation prevents destroying a reviewed request needed for retries.
+  await writeFile(output, JSON.stringify(draft, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
+  return { status: 'draft-created', nextAction: 'Review scope, authorization, location and acceptanceCriteria in the file. This has not been submitted. Keep this exact file/key for retries after submission.' };
+}
+
 export async function run(file, args) {
   try {
     const scenario = JSON.parse(await readFile(file, 'utf8'));
@@ -43,13 +51,15 @@ export async function run(file, args) {
       console.log(JSON.stringify({ mode: 'offline simulation — no network requests', request: scenario.task, lifecycle: ['submitted', 'matching', 'in_progress', 'review', 'completed'], sampleResult: scenario.sampleResult, note: 'Fabricated walkthrough, not a completed customer job. Real tasks can also be declined or cancelled; review can request rework.' }, null, 2));
     } else if (args.length === 1 && args[0] === '--request') {
       console.log(JSON.stringify(scenario.task, null, 2));
+    } else if (args.length === 2 && args[0] === '--prepare') {
+      console.log(JSON.stringify(await prepareRequest(scenario.task, args[1]), null, 2));
     } else if (args.length === 1 && args[0] === '--explore') {
       console.log(JSON.stringify(await explore(scenario, origin), null, 2));
     } else if (args.length === 3 && args[0] === '--submit') {
       const body = await readFile(args[1], 'utf8');
       const credential = JSON.parse(await readFile(args[2], 'utf8'));
       console.log(JSON.stringify(await submitReviewedRequest(body, credential.token, origin), null, 2));
-    } else throw new Error('Usage: node examples/<name>/run.mjs [--request | --explore | --submit REQUEST_FILE CREDENTIAL_FILE]');
+    } else throw new Error('Usage: node examples/<name>/run.mjs [--request | --prepare NEW_FILE | --explore | --submit REQUEST_FILE CREDENTIAL_FILE]');
   } catch (error) {
     // Do not echo network errors, arbitrary API bodies or credential-file contents.
     console.error(error instanceof Error && /^(Usage:|Use an origin|HTTPS is required|A client credential|The request needs|Public exploration failed|Submission returned)/.test(error.message) ? error.message : 'Example failed. Check origin, input files and connectivity; keep credentials private.');
