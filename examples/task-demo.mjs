@@ -7,7 +7,7 @@ const brief=JSON.parse(await readFile(file,'utf8'));
 const submit=flag==='--submit';
 if(submit && !process.env.PHYSICAL_AGENCY_CLIENT_TOKEN) throw new Error('Submitting requires a pilot invitation token in PHYSICAL_AGENCY_CLIENT_TOKEN. Never commit or print it.');
 const client=new Client({name:'physical-agency-task-demo',version:'0.2.0'});
-const url=new URL('https://physical-agency-141382386601.asia-southeast1.run.app/api/mcp');
+const url=new URL('https://jobs.made-in.ai/api/mcp');
 try {
  await client.connect(new StreamableHTTPClientTransport(url,submit?{requestInit:{headers:{Authorization:`Bearer ${process.env.PHYSICAL_AGENCY_CLIENT_TOKEN}`}}}:{}));
  const capabilities=await client.callTool({name:'get_capabilities',arguments:{}});

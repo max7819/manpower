@@ -1,7 +1,7 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js';
 
-const endpoint = new URL('https://physical-agency-141382386601.asia-southeast1.run.app/api/mcp');
+const endpoint = new URL('https://jobs.made-in.ai/api/mcp');
 const client = new Client({ name: 'physical-agency-public-discovery', version: '0.2.0' });
 try {
   await client.connect(new StreamableHTTPClientTransport(endpoint));

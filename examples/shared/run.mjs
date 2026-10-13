@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
 
-export const DEFAULT_ORIGIN = 'https://physical-agency-141382386601.asia-southeast1.run.app';
+export const DEFAULT_ORIGIN = 'https://jobs.made-in.ai';
 
 export function originUrl(value = DEFAULT_ORIGIN) {
   const url = new URL(value);
