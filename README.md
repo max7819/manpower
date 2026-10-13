@@ -74,3 +74,6 @@ Integration documentation and examples only — not the hosted application's sou
 The scripts in [`examples/`](examples/README.md) were written for the earlier *operator-reviewed inquiry* flow. Their offline walkthroughs and `--explore` mode (read-only discovery) still run with Node.js 22+; new inquiry submissions (`submit_task`) are closed and return `410 INQUIRIES_CLOSED`. [Task guides](guides/README.md) remain useful for writing clear work requests.
 
 Questions: physical_agency@agentmail.to · Operated by 스탠다드 메이커 (Standard Maker), Korea.
+
+The examples and documentation in this repository are released under the [MIT License](LICENSE). The hosted Praxis service, its source code and its data are not covered by this license.
+

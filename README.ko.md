@@ -42,3 +42,6 @@ Claude에서는 설정 → 커넥터 → *사용자 지정 커넥터 추가*에 
 공식 MCP Registry에 `io.github.max7819/manpower`로 등록되어 있습니다 ([게시 기록](registry/README.md)).
 
 문의: physical_agency@agentmail.to · 운영: 스탠다드 메이커
+
+이 저장소의 예제와 문서는 [MIT 라이선스](LICENSE)로 공개합니다. 운영 중인 Praxis 서비스와 그 소스 코드·데이터는 이 라이선스에 포함되지 않습니다.
+
