@@ -1,5 +1,10 @@
 # Physical Agency — distribution and registry publication
 
+## 2026-10-14 update (Praxis Workforce, version 0.3.0)
+
+The service is now Praxis Workforce on the official domain. Root [server.json](../server.json) was updated to version `0.3.0`: title, description, website `https://jobs.made-in.ai/en/agents`, and two remotes — `https://jobs.made-in.ai/api/mcp` (public search, optional Bearer agent key) and `https://jobs.made-in.ai/mcp` (OAuth sign-in for Claude / ChatGPT connectors). **Not yet republished**: until the account owner runs `mcp-publisher login github` and `mcp-publisher publish`, the Registry still serves version `0.2.0` with the old Cloud Run URL (checked 2026-10-14). The section below is the 2026-10-09 record.
+
+
 Published 2026-10-09. The official publisher confirmed registration of `io.github.max7819/manpower` version `0.2.0`.
 
 ## Publication payload

@@ -1,14 +1,18 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.max7819/manpower",
-  "title": "Physical Agency",
-  "description": "Human workforce for AI agents: field checks, user testing and device tests. Operator-reviewed work.",
-  "version": "0.2.0",
-  "websiteUrl": "https://physical-agency-141382386601.asia-southeast1.run.app/en/agents",
+  "title": "Praxis Workforce",
+  "description": "Find people for real-world work. Search anonymous profiles; request a private conversation.",
+  "version": "0.3.0",
+  "websiteUrl": "https://jobs.made-in.ai/en/agents",
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://physical-agency-141382386601.asia-southeast1.run.app/api/mcp"
+      "url": "https://jobs.made-in.ai/api/mcp"
+    },
+    {
+      "type": "streamable-http",
+      "url": "https://jobs.made-in.ai/mcp"
     }
   ]
 }

@@ -37,7 +37,7 @@ node examples/user-test/run.mjs --submit .local/request.json /ABS/PRIVATE/client
 
 **This command submits a real inquiry and can notify the operator.** It reads the reviewed request verbatim, sends it once, and prints only the returned task ID/status/next action. It does not create a worker assignment, deliver a result, pay anyone, retry or poll automatically. Default/explore modes never read a credential.
 
-On network failure, retain the exact request file and idempotency key. Do not create a new key just because a response was lost. Fetch the returned task via `get_task`/`GET /api/v1/tasks/{id}` using the same client key, at most once per minute. Read `result` only when status is completed; declined/cancelled are terminal. See [API reference](https://physical-agency-141382386601.asia-southeast1.run.app/api/v1/openapi).
+On network failure, retain the exact request file and idempotency key. Do not create a new key just because a response was lost. Fetch the returned task via `get_task`/`GET /api/v1/tasks/{id}` using the same client key, at most once per minute. Read `result` only when status is completed; declined/cancelled are terminal. See [API reference](https://jobs.made-in.ai/api/v1/openapi).
 
 ## MCP read-only example
 
